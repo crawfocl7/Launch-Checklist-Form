@@ -36,20 +36,22 @@ form.addEventListener("submit", function(event) {
  let fuelGood = false;
  let cargoGood = false;
 
- if (pilotName.value === "") {
-    alert("All fields are required!");
-    event.preventDefault();
+if (pilotName.value === "" || copilotName === "" || fuelLevel === "" || cargoMass === ""){
+   alert("All fields are required!");
+}
 
- } else if (!isNaN(pilotName.value)) {
-    alert("Name should include only letters.");
-    event.preventDefault();
+if (pilotName.value === "") {
+   event.preventDefault();
 
- } else {
-    statusVisible += 1;
- }
+} else if (!isNaN(pilotName.value)) {
+   alert("Name should include only letters.");
+   event.preventDefault();
+
+} else {
+   statusVisible += 1;
+}
 
  if (copilotName.value === "") {
-    alert("All fields are required!");
     event.preventDefault();
 
  }  else if (!isNaN(copilotName.value)) {
@@ -61,7 +63,6 @@ form.addEventListener("submit", function(event) {
  }
 
  if (fuelLevel === "") {
-    alert("All fields are required!");
     launchStatus.innerHTML = `Shuttle Not Ready for Launch.`;
     launchStatus.style.color = "red";
     event.preventDefault();
@@ -73,6 +74,7 @@ form.addEventListener("submit", function(event) {
  } else {
     fuelLevel = Number(fuelLevel);
      statusVisible += 1;
+
      if (fuelLevel < 10000) {
       fuelStatus.innerHTML = `Fuel level too low for launch.`;
       launchStatus.innerHTML = `Shuttle Not Ready for Launch.`;
@@ -85,7 +87,6 @@ form.addEventListener("submit", function(event) {
  }
 
  if (cargoMass === "") {
-    alert("All fields are required!");
     launchStatus.innerHTML = `Shuttle Not Ready for Launch.`;
     launchStatus.style.color = "red";
     event.preventDefault();
@@ -106,7 +107,6 @@ form.addEventListener("submit", function(event) {
       cargoStatus.innerHTML = `Cargo mass low enough for launch.`;
       cargoGood = true;
      }
-   
  }
 
  if (fuelGood && cargoGood) {
